@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.IOException;
 
 public class Application{
 
@@ -8,6 +9,7 @@ public class Application{
     static ArrayList<Lecturer> lecturers = new ArrayList<Lecturer>();
     static ArrayList<GeneralStaff> staff = new ArrayList<GeneralStaff>();
     static String command;
+    private static FileHandler fileHandler = new FileHandler();
 
     public static void main(String[] args){
 
@@ -66,6 +68,7 @@ public class Application{
         String name;
         String surname;
         int id;
+        Student student;
 
         System.out.println("Please enter student name:");
         name = input.nextLine();
@@ -73,13 +76,16 @@ public class Application{
         surname = input.nextLine();
         System.out.println("Please enter student ID:");
         id = Integer.parseInt(input.nextLine());
-        students.add(new Student(name, surname, id));
+        student = new Student(name, surname, id);
+        //students.add(student);
+        fileHandler.write("students.txt", student.toString());
     }
 
     private static void addLecturer(){
         String name;
         String surname;
         int id;
+        Lecturer lecturer;
 
         System.out.println("Please enter lecturer name:");
         name = input.nextLine();
@@ -87,13 +93,16 @@ public class Application{
         surname = input.nextLine();
         System.out.println("Please enter lecturer ID:");
         id = Integer.parseInt(input.nextLine());
-        lecturers.add(new Lecturer(name, surname, id));
+        lecturer = new Lecturer(name, surname, id);
+        //lecturers.add(lecturer);
+        fileHandler.write("lecturers.txt", lecturer.toString());
     }
 
     private static void addGeneralStaff(){
         String name;
         String surname;
         int id;
+        GeneralStaff generalStaff;
 
         System.out.println("Please enter general staff member name:");
         name = input.nextLine();
@@ -101,10 +110,16 @@ public class Application{
         surname = input.nextLine();
         System.out.println("Please enter general staff member ID:");
         id = Integer.parseInt(input.nextLine());
-        staff.add(new GeneralStaff(name, surname, id));
+        generalStaff = new GeneralStaff(name, surname, id);
+        //staff.add(generalStaff);
+        fileHandler.write("generalStaff.txt", generalStaff.toString());
+
     }
 
     private static void readDetails(){
+
+        String[] dataArray;
+
         System.out.println("To view all students, press \"s\".");
         System.out.println("To view all lecturers, press \"l\".");
         System.out.println("To view all general members of staff, press \"g\".");
@@ -114,15 +129,43 @@ public class Application{
         switch(command){
 
             case "s":
-                students.forEach((n) -> System.out.println(n));
+                //students.forEach((n) -> System.out.println(n));
+                try{
+                    dataArray = fileHandler.read("students.txt");
+                    for(String data : dataArray){
+                        System.out.println(data);
+                    }
+                }
+                catch(IOException e){
+                    System.out.println("No student records found.");
+                }
                 break;
 
             case "l":
-                lecturers.forEach((n) -> System.out.println(n));
+                //lecturers.forEach((n) -> System.out.println(n));
+                try{
+                    dataArray = fileHandler.read("lecturers.txt");
+                    for(String data : dataArray){
+                        System.out.println(data);
+                    }
+                }
+                catch(IOException e){
+                    System.out.println("No lecturer records found.");
+                }
                 break;
 
             case "g":
-                staff.forEach((n) -> System.out.println(n));
+                //staff.forEach((n) -> System.out.println(n));
+                try{
+                    dataArray = fileHandler.read("generalStaff.txt");
+                    for(String data : dataArray){
+                        System.out.println(data);
+
+                    }
+                }
+                catch(IOException e){
+                    System.out.println("No general staff records found.");
+                }
                 break;
 
             default:
