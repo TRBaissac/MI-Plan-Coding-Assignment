@@ -40,4 +40,8 @@ public class Lecturer{
     public void setID(int id){
         this.id = id;
     }
+
+    public String toString(){
+        return name + " " + surname + " " + id + ".";
+    }
 }
