@@ -129,7 +129,7 @@ public class Application{
         switch(command){
 
             case "s":
-                //students.forEach((n) -> System.out.println(n));
+
                 try{
                     dataArray = fileHandler.read("students.txt");
                     for(String data : dataArray){
@@ -142,7 +142,7 @@ public class Application{
                 break;
 
             case "l":
-                //lecturers.forEach((n) -> System.out.println(n));
+
                 try{
                     dataArray = fileHandler.read("lecturers.txt");
                     for(String data : dataArray){
@@ -155,7 +155,7 @@ public class Application{
                 break;
 
             case "g":
-                //staff.forEach((n) -> System.out.println(n));
+
                 try{
                     dataArray = fileHandler.read("generalStaff.txt");
                     for(String data : dataArray){

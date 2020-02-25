@@ -2,14 +2,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StudentPage extends JFrame implements ActionListener{
+public class GeneralStaffPage extends JFrame implements ActionListener{
 
-    public StudentPage(){
-        JTextField nameField = new JTextField("Student Name");
+    public GeneralStaffPage(){
+        JTextField nameField = new JTextField("General Staff Name");
         nameField.setBounds(100, 60, 200, 20);
-        JTextField surnameField = new JTextField("Student Surname");
+        JTextField surnameField = new JTextField("General Staff Surname");
         surnameField.setBounds(100, 170, 200, 20);
-        JTextField idField = new JTextField("Student ID");
+        JTextField idField = new JTextField("General Staff ID");
         idField.setBounds(100, 280, 200, 20);
         JButton addDetails = new JButton("Add details to system");
         addDetails.setBounds(100, 390, 200, 50);
@@ -44,7 +44,7 @@ public class StudentPage extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args){
-        new StudentPage();
+        new GeneralStaffPage();
     }
 
 
